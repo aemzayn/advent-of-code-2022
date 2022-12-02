@@ -35,7 +35,6 @@ choices_map = {
   'Z': scissors,
 }
 
-total_score = 0
 
 def check_winner(player_choice, opponent_choice):
   score = strategies[player_choice]['score']
@@ -49,8 +48,9 @@ def check_winner(player_choice, opponent_choice):
     # draw
     return score + DRAW_SCORE 
 
-with open(real, 'r') as f:
-  for line in f:
+def part_one(lines):
+  total_score = 0
+  for line in lines:
     opponent, player = line[0], line[2]
     score = check_winner(
       choices_map[player],
@@ -59,3 +59,33 @@ with open(real, 'r') as f:
     total_score += score
     # print(score)
   print(f'Total score: {total_score}')
+
+def make_choice(player_strategy, opponent_choice):
+  opponent_strategy = strategies[opponent_choice]
+
+  if player_strategy == 'X':
+    # player should lost
+    player_choice = opponent_strategy['win']
+    return strategies[player_choice]['score'] + LOST_SCORE
+  elif player_strategy == 'Y':
+    # player should draw
+    return opponent_strategy['score'] + DRAW_SCORE
+  else:
+    # player should win
+    player_choice = opponent_strategy['lost']
+    return strategies[player_choice]['score'] + WIN_SCORE
+  
+
+def part_two(lines):
+  total_score = 0
+  for line in lines:
+    opponent, player = line[0], line[2]
+    score = make_choice(player, choices_map[opponent])
+    total_score += score
+  print(f'Total score: {total_score}')
+
+# with open(real, 'r') as f:
+#   part_one(f)
+
+with open(real, 'r') as f:
+  part_two(f)
