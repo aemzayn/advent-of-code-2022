@@ -1,5 +1,5 @@
-example = '../data/example-day-4.txt'
-real = '../data/day-4.txt'
+example = './example.txt'
+real = './input.txt'
 
 def split_sections(line):
   sections = line.split(',')

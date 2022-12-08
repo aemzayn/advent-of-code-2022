@@ -1,5 +1,5 @@
-example = '../data/example-day-1.txt'
-real = '../data/day-1.txt'
+example = './example.txt'
+real = './input.txt'
 
 with open(example, 'r') as f:
   calories = []

@@ -1,5 +1,5 @@
-example = '../data/example-day-2.txt'
-real = '../data/day-2.txt'
+example = './example.txt'
+real = './input.txt'
 
 WIN_SCORE = 6
 DRAW_SCORE = 3

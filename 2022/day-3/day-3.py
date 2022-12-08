@@ -1,5 +1,5 @@
-example = '../data/example-day-3.txt'
-real = '../data/day-3.txt'
+example = './example.txt'
+real = './input.txt'
 
 def find_same_item(first_compartment, second_compartment):
   for item in first_compartment:
